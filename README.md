@@ -11,7 +11,7 @@ CraftMyCV is a powerful web application designed to simplify the process of crea
 - **Download Options:** Easily export your CV in PDF format.
 - **User-Friendly Interface:** Simple and intuitive navigation for all users.
 - **Responsive Design:** Optimized for both desktop and mobile use, allowing users to create CVs on any device.
-- 
+  
 ## Tech Stack
 
 - **Frontend:** 
