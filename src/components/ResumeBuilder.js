@@ -12,7 +12,7 @@ import html2pdf from 'html2pdf.js';
 
 const ResumeBuilder = () => {
   const { templateNumber } = useParams();
-  
+
   const [formData, setFormData] = useState({
     firstName: 'Michael',
     lastName: 'Jordan',
@@ -21,9 +21,9 @@ const ResumeBuilder = () => {
     links: 'github.com',
     summary: 'A passionate frontend developer with expertise in crafting dynamic and responsive user interfaces.',
     education: [{
-      clg_name: 'CBIT',
+      clg_name: 'Chaitanya Bharathi Institute of Technology',
       course_name: 'Computer Science',
-      cgpa: '8.5',
+      cgpa: '9.11',
       from: '2021',
       to: '2025'
     }],
@@ -34,17 +34,31 @@ const ResumeBuilder = () => {
       exp_from: '2021',
       exp_to: '2025'
     }],
-    skills: 'Html, Css, Javascript, Python, Machine Learning',
-    projects: [{
-      proj_name: 'Resume Builder',
-      proj_desc: 'Build a resume pdf using data collected from a form',
+    skills: 'C, CPP, Python, HTML, CSS, Bootstrap, Tailwind CSS  SQL, JavaScript,  ReactJs, MongoDB, MySQL, Git/ GitHub,VS Code',
+    projects: [
+      {
+      proj_name: 'CraftMyCv',
+      proj_desc: ' A responsive web app for real-time resume customization and preview. Offers seamless editing and instant PDF downloads, built with React and Tailwind CSS for an intuitive user experience',
       proj_link: 'www.craftMyCV.com'
-    }],
-    certifications: [{
-      cert_name: 'Google Data Analytics',
-      cert_orgname: 'Coursera',
-      cert_link: 'www.coursera.com'
-    }],
+    },
+    {
+      proj_name: 'Instagram Fraud Detection',
+      proj_desc: ' Developed an advanced fraud detection system for Instagram, leveraging machine learning algorithms and sophisticated feature extraction techniques to accurately identify and prevent fraudulent activities.',
+      proj_link: 'https://github.com/SumanR1602/InstaFrauddetection'
+    }
+  ],
+    certifications: [
+      {
+        cert_name: 'Google Data Analytics',
+        cert_orgname: 'Coursera',
+        cert_link: 'www.coursera.com'
+      },
+      {
+        cert_name: 'Microsoft Azure',
+        cert_orgname: 'Microsoft',
+        cert_link: 'www.microsoft.com'
+      },
+    ],
     achievements: 'Winner in Hackathon conducted by Course Vita',
     extra_curricular_activities: 'Reading books, playing badminton, jogging',
     additional_links: 'www.linkedIn.com, www.leetcode.com'
@@ -76,7 +90,7 @@ const ResumeBuilder = () => {
       case '5': return <Template5 formData={formData} />;
       case '6': return <Template6 formData={formData} />;
       case '7': return <Template7 formData={formData} />;
-      default: return <Template1 formData={formData} />; // default to Template1
+      default: return <Template1 formData={formData} />;
     }
   };
 
@@ -96,8 +110,8 @@ const ResumeBuilder = () => {
           </div>
         </div>
 
-        <div id="resumePreview" className="w-full lg:w-1/2 mt-8 lg:mt-0">
-          {renderTemplate()} 
+        <div id="resumePreview">
+          {renderTemplate()}
         </div>
       </div>
     </div>

@@ -1,83 +1,124 @@
 import React from 'react';
 
 const Template1 = ({ formData }) => {
-    const { firstName, lastName, email, phone, links, summary, education, experience, skills, projects, certifications, achievements, extra_curricular_activities, additional_links } = formData;
+    const { 
+        firstName, 
+        lastName, 
+        email, 
+        phone, 
+        links, 
+        summary, 
+        education, 
+        experience, 
+        skills, 
+        projects, 
+        certifications, 
+        achievements, 
+        extra_curricular_activities, 
+        additional_links 
+    } = formData;
 
+    // Helper function to split comma-separated string into list
+    const splitStringIntoList = (inputString) => {
+        if (!inputString) return [];
+        return inputString.split(',').map(item => item.trim());
+    };
+
+    const skillsList = splitStringIntoList(skills);
+    const extraCurricularList = splitStringIntoList(extra_curricular_activities);
+    const additionalLinksList = splitStringIntoList(additional_links);
 
     return (
-        <div className="p-6 max-w-4xl mx-auto bg-white shadow-md rounded-lg">
-            <header className="text-center mb-6">
+        <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
+            <div className="text-center">
                 <h1 className="text-3xl font-bold">{firstName} {lastName}</h1>
-                <p className="text-lg text-gray-600">{email} | {phone}</p>
-                <a href={links} className="text-blue-500">{links}</a>
-            </header>
-            <section className="mb-6">
-                <h2 className="text-xl font-semibold mb-2">Summary</h2>
-                <p className="text-gray-700">{summary}</p>
-            </section>
-            <section className="mb-6">
-                <h2 className="text-xl font-semibold mb-2">Education</h2>
-                {education.map((edu, index) => (
-                    <div key={index} className="mb-4">
-                        <h3 className="text-lg font-semibold">{edu.clg_name}</h3>
-                        <p className="text-gray-600">{edu.course_name}</p>
-                        <p className="text-gray-600">CGPA: {edu.cgpa}</p>
-                        <p className="text-gray-600">{edu.from} - {edu.to}</p>
+                <div className="flex justify-center space-x-4 text-sm text-gray-600 mt-2">
+                    <span>📞 {phone}</span>
+                    <span>✉️ {email}</span>
+                    <div className="text-sm text-blue-500 flex justify-center space-x-2">
+                        {additionalLinksList.map((link, index) => (
+                            <a key={index} href={link} className="hover:underline">🔗 {link}</a>
+                        ))}
                     </div>
-                ))}
-            </section>
+                </div>
+            </div>
 
-            <section className="mb-6">
-                <h2 className="text-xl font-semibold mb-2">Experience</h2>
+            {/* Summary */}
+            <div className="mt-6">
+                <h2 className="text-xl font-semibold border-b border-gray-300 pb-1">SUMMARY</h2>
+                <p className="mt-2">{summary}</p>
+            </div>
+
+            {/* Education */}
+            <div className="mt-6">
+                <h2 className="text-xl font-semibold border-b border-gray-300 pb-1">EDUCATION</h2>
+                {education.map((edu, index) => (
+                    <p className="mt-2" key={index}>
+                        <strong>{edu.clg_name}</strong><br />
+                        {edu.course_name} <br />
+                        <div className="flex justify-between">
+                            <p> <strong className="text-sm">CGPA: </strong>{edu.cgpa}</p>
+                            <p>{edu.from} - {edu.to}</p>
+                        
+                        </div>
+                    </p>
+                ))}
+            </div>
+
+            {/* Skills & Courses */}
+            <div className="mt-6">
+                <h2 className="text-xl font-semibold border-b border-gray-300 pb-1">SKILLS & COURSES</h2>
+                <p className="mt-2">
+                    <strong>Skills:</strong> {skillsList.join(', ')}
+                </p>
+            </div>
+
+            {/* Experience */}
+            <div className="mt-6">
+                <h2 className="text-xl font-semibold border-b border-gray-300 pb-1">EXPERIENCE</h2>
                 {experience.map((exp, index) => (
-                    <div key={index} className="mb-4">
-                        <h3 className="text-lg font-semibold">{exp.exp_position} at {exp.exp_company}</h3>
-                        <p className="text-gray-600">{exp.exp_desc}</p>
-                        <p className="text-gray-600">{exp.exp_from} - {exp.exp_to}</p>
-                    </div>
+                    <p className="mt-2" key={index}>
+                        <strong>{exp.exp_position} | {exp.exp_company}</strong><br />
+                        {exp.exp_from} - {exp.exp_to}<br />
+                        {exp.exp_desc}
+                    </p>
                 ))}
-            </section>
-            <section className="mb-6">
-                <h2 className="text-xl font-semibold mb-2">Skills</h2>
-                <p className="text-gray-700">{skills}</p>
-            </section>
-            <section className="mb-6">
-                <h2 className="text-xl font-semibold mb-2">Projects</h2>
-                {projects.map((proj, index) => (
-                    <div key={index} className="mb-4">
-                        <h3 className="text-lg font-semibold">{proj.proj_name}</h3>
-                        <p className="text-gray-600">{proj.proj_desc}</p>
-                        <a href={proj.proj_link} className="text-blue-500">{proj.proj_link}</a>
-                    </div>
-                ))}
-            </section>
-            <section className="mb-6">
-                <h2 className="text-xl font-semibold mb-2">Certifications</h2>
-                {certifications.map((cert, index) => (
-                    <div key={index} className="mb-4">
-                        <h3 className="text-lg font-semibold">{cert.cert_name}</h3>
-                        <p className="text-gray-600">{cert.cert_orgname}</p>
-                        <a href={cert.cert_link} className="text-blue-500">{cert.cert_link}</a>
-                    </div>
-                ))}
-            </section>
-            <section className="mb-6">
-                <h2 className="text-xl font-semibold mb-2">Achievements</h2>
-                <p className="text-gray-700">{achievements}</p>
-            </section>
-            <section className="mb-6">
-                <h2 className="text-xl font-semibold mb-2">Extra-Curricular Activities</h2>
-                <p className="text-gray-700">{extra_curricular_activities}</p>
-            </section>
-            <section>
-                <h2 className="text-xl font-semibold mb-2">Additional Links</h2>
-                <a href={additional_links} className="text-blue-500">{additional_links}</a>
-            </section>
+            </div>
+
+            {/* Projects */}
+            <div className="mt-6">
+                <h2 className="text-xl font-semibold border-b border-gray-300 pb-1">PROJECTS</h2>
+                <ul className="list-disc ml-5 mt-2">
+                    {projects.map((project, index) => (
+                        <li key={index}>
+                            <strong>{project.proj_name}:</strong> {project.proj_desc}<br/>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            {/* Achievements & Certifications */}
+            <div className="mt-6">
+                <h2 className="text-xl font-semibold border-b border-gray-300 pb-1">ACHIEVEMENTS & CERTIFICATIONS</h2>
+                <ul className="list-disc ml-5 mt-2">
+                    <li>{achievements}</li>
+                    {certifications.map((cert, index) => (
+                        <li key={index}>{cert.cert_name}</li>
+                    ))}
+                </ul>
+            </div>
+
+            {/* Extracurricular Activities */}
+            <div className="mt-6">
+                <h2 className="text-xl font-semibold border-b border-gray-300 pb-1">EXTRACURRICULAR ACTIVITIES</h2>
+                <ul className="list-disc ml-5 mt-2">
+                    {extraCurricularList.map((activity, index) => (
+                        <li key={index}>{activity}</li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };
 
 export default Template1;
-
-
-

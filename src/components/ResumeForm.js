@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import ExpandableSection from "./ExpandableSection";
 
 const ResumeForm = ({ formData, onFormChange }) => {
@@ -8,15 +8,6 @@ const ResumeForm = ({ formData, onFormChange }) => {
     const { name, value } = e.target;
     onFormChange({ ...formData, [name]: value });
   };
-
-const handleButtonClick = () => {
-    if (fileInputRef.current) {
-        fileInputRef.current.click();
-    }
-};
-
-  
-
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -24,9 +15,6 @@ const handleButtonClick = () => {
       onFormChange({ ...formData, photo: photoUrl });
     }
   };
-
-
-
   const handleSectionChange = (section, index, field, value) => {
     const updatedSection = [...formData[section]];
     updatedSection[index][field] = value;

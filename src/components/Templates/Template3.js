@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Template3 = ({ formData }) => {
-    const { firstName, lastName, email, phone, links, summary, education, experience, skills, projects, certifications, achievements, extra_curricular_activities, additional_links } = formData;
+    const { firstName, lastName, email, phone, links, summary, education, experience, projects, certifications, achievements, extra_curricular_activities, additional_links } = formData;
 
     return (
         <div className="p-8 max-w-4xl mx-auto bg-white shadow-md rounded-lg">

@@ -7,8 +7,8 @@ const Layout = () => {
     <>
       <header className="inset-x-0 top-0 z-50">
         <nav aria-label="Global" className="flex items-center justify-between px-6 py-4 lg:px-64">
-          <div className="flex">
-            <img src={logo} alt="logo" className='h-20' />
+          <div className="flex flex-col">
+            <img src={logo} alt="logo" className='h-24' />
           </div>
 
           <div className="lg:hidden flex justify-end">
